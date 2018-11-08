@@ -21,7 +21,7 @@ export class TodoService {
     return [...this.posts];
   }
 
-  addPost(title: string, content: string): Observable<any> {
+  addToDo(title: string, content: string): Observable<any> {
     const post: ToDo = {title: title, content: content};
     return this.http.post("http://localhost:8081/api/posts",post);
   }

@@ -11,9 +11,9 @@ export class TodoCreateComponent implements OnInit {
 
   constructor(private service:TodoService) { }
 
-  onAddPost(form: NgForm) {
+  onAddToDo(form: NgForm) {
 
-    this.service.addPost(form.value.title, form.value.content).subscribe();
+    this.service.addToDo(form.value.title, form.value.content).subscribe();
     
     console.log(form.value);
     form.resetForm();
