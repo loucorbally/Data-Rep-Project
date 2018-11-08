@@ -1,10 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ToDoCreateComponent } from './to-do-create/to-do-create.component';
 import { ToDoDetailsComponent } from './to-do-details/to-do-details.component';
+import { TodoCreateComponent } from './to-do-create/to-do-create.component';
+import {TodoService} from './services/todo.service';
+import {HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes} from '@angular/router';
+import { FormsModule } from "@angular/forms";
 import { MatInputModule,
   MatMenuModule,
   MatCardModule,
@@ -13,22 +16,40 @@ import { MatInputModule,
   MatToolbarModule,
   MatExpansionModule} from '@angular/material';
 
+
+const appRoutes: Routes = [
+  {
+    path: 'list',
+    component: ToDoDetailsComponent
+  },
+  {
+    path: 'create',
+    component: TodoCreateComponent
+  }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
-    ToDoCreateComponent,
+    TodoCreateComponent,
     ToDoDetailsComponent
   ],
   imports: [
+    RouterModule.forRoot(appRoutes),
     BrowserModule,
-    AppRoutingModule,
-    MatCardModule,
+    FormsModule,
+    HttpClientModule,
+    MatIconModule,
+    MatButtonModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+  MatCardModule,
   MatButtonModule,
   MatToolbarModule,
   MatExpansionModule,
   MatMenuModule
   ],
-  providers: [],
+  providers: [TodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
