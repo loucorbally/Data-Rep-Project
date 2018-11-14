@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TodoService} from '../services/todo.service';
 import { Observable } from 'rxjs';
-import {ToDo} from '../todo.model';
+import {ToDoModel} from '../todo.model';
 import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -31,4 +31,3 @@ export class ToDoDetailsComponent implements OnInit {
      })
    }
 }
-

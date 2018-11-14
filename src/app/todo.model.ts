@@ -1,4 +1,4 @@
-export interface ToDo {
+export interface ToDoModel {
     title: string;
     content: string;
   }

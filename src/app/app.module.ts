@@ -15,6 +15,7 @@ import { MatInputModule,
   MatIconModule,
   MatToolbarModule,
   MatExpansionModule} from '@angular/material';
+import { ToDoEditComponent } from './to-do-edit/to-do-edit.component';
 
 
 const appRoutes: Routes = [
@@ -25,6 +26,10 @@ const appRoutes: Routes = [
   {
     path: 'create',
     component: TodoCreateComponent
+  },
+  {
+    path: 'edit',
+    component: ToDoEditComponent
   }
 ];
 
@@ -32,7 +37,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     TodoCreateComponent,
-    ToDoDetailsComponent
+    ToDoDetailsComponent,
+    ToDoEditComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

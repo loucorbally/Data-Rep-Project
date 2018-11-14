@@ -2,9 +2,9 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
-
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://admin:hello123@ds253353.mlab.com:53353/datarepproject';
+var mongoDB = 'mongodb://admin:123hello@ds253353.mlab.com:53353/datarepproject';
+//            'mongodb://admin:hello123@ds253353.mlab.com:53353/datarepproject';
 mongoose.connect(mongoDB);
 
 var Schema = mongoose.Schema;
@@ -12,7 +12,7 @@ var postSchema = new Schema({
     title: String,
     content: String
 })
-var PostModel = mongoose.model('post', postSchema);
+var ToDoModel = mongoose.model('post', postSchema);
 
 
 //Here we are configuring express to use body-parser as middle-ware. 
@@ -42,7 +42,7 @@ app.post('/api/posts', function(req, res){
     console.log(req.body.title);
     console.log(req.body.content);
 
-    PostModel.create({
+    ToDoModel.create({
         title: req.body.title,
         content: req.body.content
     });
@@ -52,7 +52,7 @@ app.post('/api/posts', function(req, res){
 })
 
 app.get('/api/posts', function(req, res){
-    PostModel.find(function(err, data){
+    ToDoModel.find(function(err, data){
         res.json(data);
     });
 })
@@ -60,8 +60,8 @@ app.get('/api/posts', function(req, res){
 app.get('/api/posts/:id', function(req, res){
     console.log("Read post " +req.params.id);
 
-    //PostModel.find({_id : req.params.id}, 
-    PostModel.findById(req.params.id,
+    //ToDoModel.find({_id : req.params.id}, 
+    ToDoModel.findById(req.params.id,
         function (err, data) {
             res.json(data);
         });
@@ -72,7 +72,7 @@ app.put('/api/posts/:id', function(req, res){
     console.log(req.body.title);
     console.log(req.body.content);
 
-    PostModel.findByIdAndUpdate(req.params.id, req.body, 
+    ToDoModel.findByIdAndUpdate(req.params.id, req.body, 
         function(err, data){
             res.send(data);
         })
@@ -81,7 +81,7 @@ app.put('/api/posts/:id', function(req, res){
 app.delete('/api/posts/:id', function(req, res){
     console.log(req.params.id);
 
-    PostModel.deleteOne({_id:req.params.id},
+    ToDoModel.deleteOne({_id:req.params.id},
     function(err, data)
     {
         if(err)

@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {ToDo} from '../todo.model';
+import {ToDoModel} from '../todo.model';
 //import { Stream } from 'stream';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class TodoService {
     }
 
   addToDo(title: string, content: string): Observable<any> {
-    const post: ToDo = {title: title, content: content};
+    const post: ToDoModel = {title: title, content: content};
     return this.http.post("http://localhost:8081/api/posts",post);
   }
 
@@ -29,7 +29,7 @@ export class TodoService {
   }
 
   updateToDo(id:String, title: string, content: string): Observable<any> {
-    const post: ToDo = {title: title, content: content};
+    const post: ToDoModel = {title: title, content: content};
   return this.http.put("http://localhost:8081/api/posts/"+id, post);
   }
 }
