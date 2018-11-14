@@ -28,7 +28,7 @@ const appRoutes: Routes = [
     component: TodoCreateComponent
   },
   {
-    path: 'edit',
+    path: 'edit/:id',
     component: ToDoEditComponent
   }
 ];
