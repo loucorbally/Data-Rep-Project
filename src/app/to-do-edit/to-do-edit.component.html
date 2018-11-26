@@ -1,4 +1,5 @@
 <mat-card>
+    <mat-icon>home</mat-icon>
   <form (submit)="onEditToDo(postForm)" #postForm="ngForm">
     <mat-form-field>
       <input
@@ -21,6 +22,11 @@
       </textarea>
       <mat-error *ngIf="content.invalid">Please enter a post title.</mat-error>
     </mat-form-field>
+
+    <input matInput [matDatepicker]="myDatepicker">
+    <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+    <mat-datepicker #myDatepicker></mat-datepicker>
+
     <button
       mat-raised-button
       color="accent"

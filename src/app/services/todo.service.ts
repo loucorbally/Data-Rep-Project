@@ -20,7 +20,12 @@ export class TodoService {
     return this.http.post("http://localhost:8081/api/posts",post);
   }
 
+ 
   deleteToDo(id: String): Observable<any> {
+    return this.http.delete("http://localhost:8081/api/posts/"+id);
+  }
+
+  completeToDo(id: String): Observable<any> {
     return this.http.delete("http://localhost:8081/api/posts/"+id);
   }
 

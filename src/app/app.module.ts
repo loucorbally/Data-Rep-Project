@@ -14,8 +14,14 @@ import { MatInputModule,
   MatButtonModule,
   MatIconModule,
   MatToolbarModule,
-  MatExpansionModule} from '@angular/material';
+  MatExpansionModule,MatNativeDateModule} from '@angular/material';
 import { ToDoEditComponent } from './to-do-edit/to-do-edit.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { ToDoCompleteComponent } from './to-do-complete/to-do-complete.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+
+
 
 
 const appRoutes: Routes = [
@@ -38,7 +44,11 @@ const appRoutes: Routes = [
     AppComponent,
     TodoCreateComponent,
     ToDoDetailsComponent,
-    ToDoEditComponent
+    ToDoEditComponent,
+    ToDoCompleteComponent,
+
+
+   
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -53,7 +63,13 @@ const appRoutes: Routes = [
   MatButtonModule,
   MatToolbarModule,
   MatExpansionModule,
-  MatMenuModule
+  MatMenuModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatSnackBarModule,
+  
+
+  
   ],
   providers: [TodoService],
   bootstrap: [AppComponent]

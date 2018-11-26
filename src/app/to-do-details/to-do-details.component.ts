@@ -30,4 +30,12 @@ export class ToDoDetailsComponent implements OnInit {
         this.ngOnInit();
      })
    }
-}
+
+   onComplete(id:String){
+    console.log("Complete called "+ id);
+    this.ps.completeToDo(id).subscribe(() =>
+    {
+       this.ngOnInit();
+    })
+  }
+  }
