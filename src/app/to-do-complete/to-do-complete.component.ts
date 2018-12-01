@@ -33,12 +33,18 @@ export class ToDoCompleteComponent implements OnInit {
         this.ngOnInit();
      })
    }
-
+   onDelete(id:String){
+    console.log("Delete called "+ id);
+    this.ps.deleteToDo(id).subscribe(() =>
+    {
+       this.ngOnInit();
+    })
+  }
   
 
-   openSnackBar() {
+   /*openSnackBar() {
     this.snackBar.openFromComponent(ToDoCompleteComponent, {
       duration: 500,
     });
-  }
+  } */
 }

@@ -14,7 +14,8 @@ import { MatInputModule,
   MatButtonModule,
   MatIconModule,
   MatToolbarModule,
-  MatExpansionModule,MatNativeDateModule} from '@angular/material';
+  MatExpansionModule,MatNativeDateModule,
+  DateAdapter} from '@angular/material';
 import { ToDoEditComponent } from './to-do-edit/to-do-edit.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ToDoCompleteComponent } from './to-do-complete/to-do-complete.component';
@@ -36,6 +37,10 @@ const appRoutes: Routes = [
   {
     path: 'edit/:id',
     component: ToDoEditComponent
+  },
+  {
+    path: 'complete',
+    component: ToDoCompleteComponent
   }
 ];
 
@@ -74,4 +79,8 @@ const appRoutes: Routes = [
   providers: [TodoService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+
+  
+}

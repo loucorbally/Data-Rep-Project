@@ -28,7 +28,7 @@ export class ToDoEditComponent implements OnInit {
     });
   }
   onEditToDo(form: NgForm) {
-    this.service.updateToDo(this.post._id, form.value.title, form.value.content).subscribe(() =>
+    this.service.updateToDo(this.post._id, form.value.title, form.value.content, form.value.content2, form.value.date, form.value.completed).subscribe(() =>
     {
       this.router.navigate(['/list']);
     });

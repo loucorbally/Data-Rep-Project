@@ -11,12 +11,12 @@ export class TodoService {
 
   constructor(private http: HttpClient) { }
   
-    getToDoData(): Observable<any> {
+  getToDoData(): Observable<any> {
       return this.http.get("http://localhost:8081/api/posts");
     }
 
-  addToDo(title: string, content: string): Observable<any> {
-    const post: ToDoModel = {title: title, content: content};
+  addToDo(title: string, content: string, content2: string, date: string, completed: Boolean): Observable<any> {
+    const post: ToDoModel = {title: title, content: content, content2: content, date: date, completed: false};
     return this.http.post("http://localhost:8081/api/posts",post);
   }
 
@@ -26,15 +26,17 @@ export class TodoService {
   }
 
   completeToDo(id: String): Observable<any> {
-    return this.http.delete("http://localhost:8081/api/posts/"+id);
+    
+    return this.http.patch("http://localhost:8081/api/posts/"+id, JSON.stringify('Completing'));
   }
 
   getToDo(id:String): Observable<any> {
+ 
     return this.http.get("http://localhost:8081/api/posts/"+id);
   }
 
-  updateToDo(id:String, title: string, content: string): Observable<any> {
-    const post: ToDoModel = {title: title, content: content};
+  updateToDo(id:String, title: string, content: string, content2: string, date: string, completed: Boolean): Observable<any> {
+    const post: ToDoModel = {title: title, content: content, content2: content, date: date, completed: false};
   return this.http.put("http://localhost:8081/api/posts/"+id, post);
   }
 }

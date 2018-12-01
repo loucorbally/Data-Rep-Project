@@ -2,20 +2,44 @@
 <mat-toolbar color="primary"> 
   <mat-toolbar-row>
           <span class="title-center">
-      To Do List
+  
+
+      <button mat-button [routerLink]="['/']" > To-Do</button>
   </span>
   
     </mat-toolbar-row>
   
-    <mat-toolbar-row>
-
-<button mat-button [routerLink]="['/create']" color="Warn">Create To-Do</button>
-<button mat-button [routerLink]="['/list']">Show To-Dos</button>
-<button mat-button [routerLink]="['/list']">List Completed To-Dos</button>
+<mat-toolbar-row>    
+    <button mat-button [routerLink]="'/create'" >Create To-Do</button>
+    <button mat-button [routerLink]="['/list']">Show To-Dos</button>
+    <button mat-button [routerLink]="['/complete']">List Completed To-Dos</button>
 </mat-toolbar-row>
 
 </mat-toolbar>
 
-
-
 <router-outlet></router-outlet>
+
+<p>Have you completed these To-Dos?</p>
+
+<mat-card>
+    
+  <mat-accordion multi="true" *ngFor="let post of posts">
+    <mat-expansion-panel [expanded]="true" *ngIf="posts.length > 0&& !post.completed" >
+            <mat-expansion-panel-header>
+                     {{ post.title }}
+            </mat-expansion-panel-header>
+                    <p>{{ post.content }}</p>
+            <mat-action-row>
+                    <button mat-raised-button [routerLink]="['/edit', post._id]" color="primary">EDIT</button>
+                   <button mat-raised-button (click)="onComplete(post._id)" color="accent"> COMPLETE
+            </button> 
+            
+            <button mat-raised-button (click)="onDelete(post._id)" color="warn">DELETE</button>
+            
+            </mat-action-row>
+        </mat-expansion-panel>
+        </mat-accordion>
+    <p class="info-text mat-body-1" *ngIf="posts.length <= 0">No posts added yet!</p> </mat-card>  
+
+
+

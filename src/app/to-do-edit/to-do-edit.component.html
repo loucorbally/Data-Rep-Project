@@ -1,5 +1,5 @@
 <mat-card>
-    <mat-icon>home</mat-icon>
+    <mat-icon [routerLink]="['/']" >home</mat-icon>
   <form (submit)="onEditToDo(postForm)" #postForm="ngForm">
     <mat-form-field>
       <input

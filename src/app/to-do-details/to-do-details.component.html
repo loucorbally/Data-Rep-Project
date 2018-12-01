@@ -1,17 +1,18 @@
 <mat-card>
  
-  <mat-accordion multi="true" *ngIf="posts.length > 0">
-    <mat-expansion-panel [expanded]="true" *ngFor="let post of posts">
+  <mat-accordion multi="true" *ngFor="let post of posts">
+    <mat-expansion-panel [expanded]="true" *ngIf="posts.length > 0&& !post.completed" >
       <mat-expansion-panel-header>
         {{ post.title }}
       </mat-expansion-panel-header>
       <p>{{ post.content }}</p>
+      <p> {{ post.content2 }}</p>
+      <p> {{ post.date | date }}</p>
+
+      
       <mat-action-row>
         <button mat-button [routerLink]="['/edit', post._id]" color="primary">EDIT</button>
-        <button mat-button (click)="onComplete(post._id)" color="accent"> COMPLETE
-          <mat-icon  md-menu-origin md-svg-src="check.svg"></mat-icon>
-        </button>
-       
+        <button mat-button (click)="onComplete(post._id)"  color="accent">COMPLETE</button>
         <button mat-button (click)="onDelete(post._id)" color="warn">DELETE</button>
         
       </mat-action-row>

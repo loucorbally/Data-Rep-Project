@@ -18,16 +18,25 @@ export class ToDoDetailsComponent implements OnInit {
 
   ngOnInit(){
    
-    this.ps.getToDoData().subscribe(data => {
-        this.posts = data;
-    });
+    this.getToDoDate();
+    console.debug("Component loaded ")
    }
+
+   /**
+    * Delagate call 
+    */
+    getToDoDate(){
+      this.ps.getToDoData().subscribe(data => {
+        this.posts = data;
+        console.log(data)
+    });
+    }
 
    onDelete(id:String){
      console.log("Delete called "+ id);
      this.ps.deleteToDo(id).subscribe(() =>
      {
-        this.ngOnInit();
+        this.getToDoDate()
      })
    }
 
@@ -35,7 +44,7 @@ export class ToDoDetailsComponent implements OnInit {
     console.log("Complete called "+ id);
     this.ps.completeToDo(id).subscribe(() =>
     {
-       this.ngOnInit();
+        this.getToDoDate()
     })
   }
   }

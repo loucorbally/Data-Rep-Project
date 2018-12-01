@@ -4,13 +4,16 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var mongoDB = 'mongodb://admin:123hello@ds253353.mlab.com:53353/datarepproject';
-//            'mongodb://admin:hello123@ds253353.mlab.com:53353/datarepproject';
+
 mongoose.connect(mongoDB);
 
 var Schema = mongoose.Schema;
 var postSchema = new Schema({
     title: String,
-    content: String
+    content: String,
+    content2: String,
+    date: String,
+    completed: Boolean
 })
 var ToDoModel = mongoose.model('post', postSchema);
 
@@ -21,7 +24,7 @@ app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, PATCH");
     res.header("Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept");
     next();
@@ -44,9 +47,16 @@ app.post('/api/posts', function(req, res){
 
     ToDoModel.create({
         title: req.body.title,
-        content: req.body.content
+        content: req.body.content,
+        content2: req.body.content2,
+        date: req.body.date,
+        completed: false,
+    }).then((abc)=>{
+  //TODO - REMOVE LATER
+  console.log(abc)
+  res.json('Item added');
     });
-    res.send('Item added');
+  
 
 
 })
@@ -76,6 +86,21 @@ app.put('/api/posts/:id', function(req, res){
         function(err, data){
             res.send(data);
         })
+})
+//Completed toggle 
+app.patch('/api/posts/:id', function(req, res){
+    console.log("Update Post" +req.params.id);
+  
+
+    ToDoModel.findById(req.params.id,
+        function (err, data) {
+            data["completed"] = !data["completed"]
+            ToDoModel.findByIdAndUpdate(req.params.id, data, 
+                function(err, data){
+                    res.json(data);
+                })
+        });
+   
 })
 
 app.delete('/api/posts/:id', function(req, res){
