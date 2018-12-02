@@ -11,6 +11,7 @@
         #title="ngModel">
       <mat-error *ngIf="title.invalid">Please enter a to-do title.</mat-error>
     </mat-form-field>
+
     <mat-form-field>
       <textarea
         matInput placeholder="Description"
@@ -22,7 +23,7 @@
       <mat-error *ngIf="content.invalid">Please enter a to-do description.</mat-error>
     </mat-form-field>
 
-    <mat-form-field>
+   <mat-form-field>
       <textarea
         matInput placeholder="Description2"
         rows="4"
@@ -30,10 +31,10 @@
         ngModel
         #content2="ngModel"></textarea>
       <mat-error *ngIf="content.invalid">Please enter a to-do description.</mat-error>
-    </mat-form-field>
-    
+    </mat-form-field>  
+
     <mat-form-field>
-      <input matInput [matDatepicker]="picker" [ngModel]= "date" placeholder="Choose a date" name="date" >
+      <input matInput [matDatepicker]="picker" [ngModel]="date" placeholder="Choose a date" name="date" >
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
 

@@ -16,7 +16,7 @@ export class TodoService {
     }
 
   addToDo(title: string, content: string, content2: string, date: string, completed: Boolean): Observable<any> {
-    const post: ToDoModel = {title: title, content: content, content2: content, date: date, completed: false};
+    const post: ToDoModel = {title: title, content: content, content2: content2, date: date, completed: false};
     return this.http.post("http://localhost:8081/api/posts",post);
   }
 
@@ -36,7 +36,7 @@ export class TodoService {
   }
 
   updateToDo(id:String, title: string, content: string, content2: string, date: string, completed: Boolean): Observable<any> {
-    const post: ToDoModel = {title: title, content: content, content2: content, date: date, completed: false};
+    const post: ToDoModel = {title: title, content: content, content2: content2, date: date, completed: false};
   return this.http.put("http://localhost:8081/api/posts/"+id, post);
   }
 }
